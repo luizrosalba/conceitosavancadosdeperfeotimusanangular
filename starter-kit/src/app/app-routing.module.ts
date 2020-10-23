@@ -18,7 +18,12 @@ const routes: Routes = [
      path: 'delete-list', 
   loadChildren: () => import('./delete-list/delete-list.module').then(m => m.DeleteListModule) 
   },
-  { path: 'post-example', loadChildren: () => import('./post-list/post-list.module').then(m => m.PostListModule) },
+  { 
+    path: 'post-list', 
+    loadChildren: () => import('./post-list/post-list.module').then(m => m.PostListModule) },
+  { path: 'put-list', 
+  loadChildren: () => import('./put-list/put-list.module').then(m => m.PutListModule) 
+},
 
 ]
 ;

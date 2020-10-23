@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from './post-service.service';
+import { PutService } from './put-service.service';
 import { FormsModule }   from '@angular/forms';
 
 @Component({
-  selector: 'app-post-list',
-  templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.scss']
+  selector: 'app-put-list',
+  templateUrl: './put-list.component.html',
+  styleUrls: ['./put-list.component.scss']
 })
-export class PostListComponent implements OnInit {
+export class PutListComponent implements OnInit {
 
   users: any = []; /// mapear 
-  constructor (private postService:PostService) { }
+  constructor (private putService:PutService) { }
 
   ngOnInit(): void {
-    this.postService.getUsers()
+    this.putService.getUsers()
     .subscribe((users)=>{
         this.users = users;
     })
@@ -26,11 +26,11 @@ export class PostListComponent implements OnInit {
 
   //onClickMe () {
     Click (user:Object) {
-      this.postService.postUsers(user)
+      this.putService.putUsers(user)
       .subscribe((users)=>{
           this.users = users;
       })
-      alert('Usuario ' + user["nome"] + ' adicionado');
+      alert('Usuario ' + user["nome"] + ' atualizado');
   }
 
 }

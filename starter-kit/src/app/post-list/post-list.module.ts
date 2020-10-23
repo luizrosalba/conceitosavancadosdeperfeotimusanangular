@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import { PostListRoutingModule } from './post-list-routing.module';
 import { PostListComponent } from './post-list.component';
 
@@ -9,7 +9,8 @@ import { PostListComponent } from './post-list.component';
   declarations: [PostListComponent],
   imports: [
     CommonModule,
-    PostListRoutingModule
+    PostListRoutingModule,
+    FormsModule
   ]
 })
 export class PostListModule { }

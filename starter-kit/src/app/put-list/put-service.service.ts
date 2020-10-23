@@ -15,12 +15,11 @@ const httpOptions = {
   })
 };
 
+
 @Injectable({
   providedIn: 'root'
 })
-
-export class PostService {
-  
+export class PutService {
 
   constructor(private httpClient:HttpClient) { }
 
@@ -34,25 +33,17 @@ export class PostService {
     );
   }
 
-  postUsers(user: Object): Observable<{}> {
+  putUsers(user: Object): Observable<{}> {
+    let id = user["id"];
     let nome = user["nome"];
     let descricao = user["descricao"];
     let preco = user["preco"];
     let categoria_id = user["categoria_id"];
     let body = `nome=${nome}&descricao=${descricao}&preco=${preco}&categoria_id=${categoria_id}`;
-   
-    return this.httpClient.post(routes.users(),body, httpOptions)
+    return this.httpClient.put(routes.users()+`/${id}`,body, httpOptions)
      .pipe(
        catchError(() => of('Error, could not load users'))
      );
  }
 
 }
-
-
-// let grant_type = 'password';
-// let username = 'varejo_user';
-// let password = 'w6h5xgtl';
-// let body = `grant_type=${grant_type}&username=${username}&password=${password}`;
-
-// return this.http.post(`${ApiDeSegurança}`, body, new RequestOptions({headers: header})).map(response=> response.json())

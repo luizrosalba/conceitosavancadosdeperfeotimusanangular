@@ -214,8 +214,6 @@ export class ExampleService {
     );
   }
 
-
-
 }
 ```
 
@@ -247,20 +245,27 @@ Desafio :
 
 ![](./desafio.PNG)
 
-
+Get ok 
+-o professor criou conosco 
 delete ok 
 -criei o componente delete list e sua rota 
 ng g m delete-list --route delete-example --module app.module
 - criei o servico delete-list
 - ng g service delete-list/delete-service
 - adicionar no header 
-Post 
+Post ok 
 -criei o componente delete list e sua rota 
 ng g m post-list --route post-example --module app.module
-- criei o servico delete-list
+- criei o servico post-list
 - ng g service post-list/post-service
 - adicionar no header 
-patch  e 
+Put ok 
+-criei o componente put list e sua rota 
+ng g m put-list --route put-example --module app.module
+- criei o servico put-list
+- ng g service put-list/put-service
+- adicionar no header 
+
 
 
 
