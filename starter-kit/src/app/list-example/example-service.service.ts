@@ -11,12 +11,12 @@ const routes = {
 @Injectable({
   providedIn: 'root'
 })
+
 export class ExampleService {
 
   constructor(private httpClient:HttpClient) { }
 
 
-  ///CRUD 
 
   getUsers () {
     return this.httpClient.get(routes.users())
@@ -24,15 +24,5 @@ export class ExampleService {
       catchError(() => of('Error, could not load users'))
     );
   }
-
-  
-  deleteUsers () {
-    return this.httpClient.delete(routes.users())
-    .pipe(
-      catchError(() => of('Error, could not load users'))
-    );
-  }
-
-
 
 }

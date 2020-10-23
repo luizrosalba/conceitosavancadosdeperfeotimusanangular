@@ -212,8 +212,10 @@ export class ExampleService {
     .pipe(
       catchError(() => of('Error, could not load users'))
     );
-
   }
+
+
+
 }
 ```
 
@@ -245,7 +247,24 @@ Desafio :
 
 ![](./desafio.PNG)
 
-Post patch  e delete 
+
+delete ok 
+-criei o componente delete list e sua rota 
+ng g m delete-list --route delete-example --module app.module
+- criei o servico delete-list
+- ng g service delete-list/delete-service
+- adicionar no header 
+Post 
+-criei o componente delete list e sua rota 
+ng g m post-list --route post-example --module app.module
+- criei o servico delete-list
+- ng g service post-list/post-service
+- adicionar no header 
+patch  e 
+
+
+
+
 
 ou com Github  ou local 
 

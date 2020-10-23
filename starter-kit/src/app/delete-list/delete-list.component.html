@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <th>
+            index
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users;trackBy: trackById"> 
+            <td>
+                {{user.id}} 
+            </td>
+            <td>
+                {{user.nome}}
+            </td>
+            <td>
+                {{user.descricao}}
+            </td>
+            <td>
+                <button mat-button  (click)="onClickMe(user.id)">Deletar</button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
