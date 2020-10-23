@@ -4,7 +4,7 @@ export const environment = {
   production: false,
   hmr: true,
   version: env.npm_package_version + '-dev',
-  gitHubUrl: 'https://api.github.com',
+  gitHubUrl: 'http://localhost:3000',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'fr-FR'],
 };

@@ -8,7 +8,7 @@ import { ExampleService } from './example-service.service';
 })
 export class ListExampleComponent implements OnInit {
 
-  users: any = [];
+  users: any = []; /// mapear 
   constructor (private exampleService:ExampleService) { }
 
   ngOnInit(): void {

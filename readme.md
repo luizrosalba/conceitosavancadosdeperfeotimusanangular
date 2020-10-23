@@ -245,9 +245,29 @@ Desafio :
 
 ![](./desafio.PNG)
 
-Post Fetch e delete 
+Post patch  e delete 
 
 ou com Github  ou local 
+
+- mapear o opbjeto de usuario em starter-kit\src\app\list-example\list-example.component.ts
+
+
+-colocalo para dentro do services 
+starter-kit\src\app\list-example\example-service.service.ts
+
+
+- tentei criar um json server 
+
+npm install -g json-server
+- criei o arquivo db.json dentro da pasta db dentro de source 
+json-server --watch db.json
+
+
+dai vamos usar manipular esse usuario 
+
+
+- https://api.github.com/users/1 retorna apenas o user com id 1 
+
 
 - fazer um fork e um pull request 
 
@@ -256,6 +276,10 @@ ou com Github  ou local
 - Lazy load 
 
 - Change detection (cada row da tabela seja um componente dica  : Ngcontent)
+https://medium.com/mestre-angular/entenda-change-detection-no-angular-b5f2fdf65000
+https://medium.com/senior/criando-componente-angular-com-conteudo-dinamico-ng-content-82334babe134
+
+
 - avatar do usuario vai ser um componente , que vai ter um input que vai usar onchange detenction push 
 se a row alterar e o avatar nao alterar nao deve renderizar o componente de novo 
 
