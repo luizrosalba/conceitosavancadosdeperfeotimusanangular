@@ -1,38 +1,33 @@
-
-
 <table>
-    <thead>
-        <th>
-            index
-        </th>
-    </thead>
-    <tbody>
-        <tr> 
-            <td>
-                ID
-            </td>
-            <td>
-                Nome
-            </td>
-            <td>
-                Descrição
-            </td>
-        </tr>
-        <tr > 
-            <td>
-                Auto
-            </td>
-            <td>
-                <input  type="string"  [(ngModel)]="users.nome">
-            </td>
-            <td>
-                <input  type="string"  [(ngModel)]="users.descricao">
-            </td>
-            <td>
-                <button mat-button  (click)="Click(users)">Adicionar</button>
-            </td>
-        </tr>
-    </tbody>
+  <thead>
+    <th>Adicionar Usuário</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Id</td>
+      <td>Url do Avatar</td>
+      <td>Login</td>
+      <td>html</td>
+      <td>Tipo de Usuário</td>
+    </tr>
+    <tr>
+      <td>Auto</td>
+      <td>
+        <input type="string" [(ngModel)]="users.avatar_url" />
+      </td>
+      <td>
+        <input type="string" [(ngModel)]="users.login" />
+      </td>
+      <td>
+        <input type="string" [(ngModel)]="users.html" />
+      </td>
+      <td>
+        <input type="string" [(ngModel)]="users.type" />
+      </td>
+
+      <td>
+        <button mat-button (click)="Click(users)">Adicionar</button>
+      </td>
+    </tr>
+  </tbody>
 </table>
-
-

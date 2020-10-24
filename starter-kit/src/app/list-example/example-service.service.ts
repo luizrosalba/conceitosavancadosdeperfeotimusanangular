@@ -4,25 +4,16 @@ import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 const routes = {
-  users: () => `/produtos`,
+  users: () => `/users`,
 };
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class ExampleService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient:HttpClient) { }
-
-
-
-  getUsers () {
-    return this.httpClient.get(routes.users())
-    .pipe(
-      catchError(() => of('Error, could not load users'))
-    );
+  getUsers() {
+    return this.httpClient.get(routes.users()).pipe(catchError(() => of('Error, could not load users')));
   }
-
 }

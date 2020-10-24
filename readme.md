@@ -1,65 +1,97 @@
-# Conceitos Avançados de performance e otimização usando Angular 
+# Projeto requerimento para o curso Aceleração Global Dev #1
 
-## O que queremos otimizar ? 
-- Tempo de carregamento 
-tempo entre acessso e utilização 
-- Tempo de execução 
-Melhoria no tempo de navegação e renderização dos elementos do DOM 
+## Conceitos Avançados de performance e otimização usando Angular
 
-Como o angular aborda otimização 
+### Projeto proposto :
+
+Este projeto em Angular é uma continuidade do projeto desenvolvido no curso Conceitos Avançados de performance e otimização usando Angular . Requerimentos :
+
+- Usar o enableProdMode
+- Tree-shakeable providers (providedIn) (ok)
+- Carregamento Tardio de recursos (Lazy Load)
+- Change Detection (cada Row da Tabela deve ser um componente - Ngcontent )
+- O avatar do user vai ser um componente que deve ter um input que deve usar o changeDetection on push
+  (se a row alterar e o avatar nao alterar ele não renderiza o componente de novo )
+- Pipes Puros (não houve tempo) (ok)
+- trackBy no \*ngFor (ok)
+- CRUD com a API do GitHub (foi utilizado o json server conforme sugestão do professor) (ok)
+
+Para utilização é necessário ter o Angular instalado:
+
+```
+npm install -g @angular/cli
+npm i @angular-devkit/build-angular
+npm install -g typescript
+```
+
+Para utilizar realizar o CRUD deve-se ter o json-server instalado:
+
+```
+npm install -g json-server
+cd src/db   (local onde o banco de dados está)
+json-server --watch db.json
+```
+
+## O que queremos otimizar ?
+
+- Tempo de carregamento
+  tempo entre acessso e utilização
+- Tempo de execução
+  Melhoria no tempo de navegação e renderização dos elementos do DOM
+
+Como o angular aborda otimização
 
 ![](./perf.PNG)
 
-- AOT é um assunto bom paara estudar depois 
+- AOT é um assunto bom paara estudar depois
 
 pwa = Progressive web app
 
 web workers -> Front end multithread (evitar travamento do browser)
 
-SSR- Compila no back e retorna só o dinamico 
+SSR- Compila no back e retorna só o dinamico
 
-virtual scroll -> só carrega o que está visível na página 
+virtual scroll -> só carrega o que está visível na página
 
-- colocou o nome das pastas como @ core e @ shared para ficarem sempre em primeiro na listagem de pastas 
+- colocou o nome das pastas como @ core e @ shared para ficarem sempre em primeiro na listagem de pastas
 
-- enableProdMode() -> Otimiza para modo produção 
+- enableProdMode() -> Otimiza para modo produção
 
 - no main.ts
 
 import { enableProdMode } from '@angular/core';
 
 if (environment.production){
-  enableProdMode();
+enableProdMode();
 }
 
 - no starter-kit\src\app\about\about-routing.module.ts
-const routes: Routes = [{ 
-path: '', 
-component: AboutComponent, 
-data: { title: marker('About') } }
-];
+  const routes: Routes = [{
+  path: '',
+  component: AboutComponent,
+  data: { title: marker('About') } }
+  ];
 
+## carregamento tardio de recursos
 
-## carregamento tardio de recursos 
+- construindo o modulo em bundles ( pacotes ) diferentes
 
-- construindo o modulo em bundles ( pacotes ) diferentes 
-
-lazy load -> O módulo será renderizado quando necessário, diminuindo assim o tempo de carregamento do main Isso é o ideal para partes pouco usadas ou que possam ser usadas depois, como o about. Vamos fazer isso com o about e trazer esse delay para o runtime. 
-Vc vai até o app.module.ts (bootstrap da aplicação), remove o módulo do @NgModule senão ele continuará sendo incluido no bundle 
+lazy load -> O módulo será renderizado quando necessário, diminuindo assim o tempo de carregamento do main Isso é o ideal para partes pouco usadas ou que possam ser usadas depois, como o about. Vamos fazer isso com o about e trazer esse delay para o runtime.
+Vc vai até o app.module.ts (bootstrap da aplicação), remove o módulo do @NgModule senão ele continuará sendo incluido no bundle
 
 incluimos no routes. starter-kit\src\app\app-routing.module.ts
 
-  {
-    path: 'about',
-    loadChildren: () => import('./about/about.module').then((m) => m.AboutModule),
-  },
+{
+path: 'about',
+loadChildren: () => import('./about/about.module').then((m) => m.AboutModule),
+},
 
-- nunca faça lazy load da rota inicial ! 
-- lazy route de componente 
+- nunca faça lazy load da rota inicial !
+- lazy route de componente
 
-## Change Detection 
+## Change Detection
 
-- OnPush : componente imutável  só sendo mudado se o @input for mudado 
+- OnPush : componente imutável só sendo mudado se o @input for mudado
 
 - mudamos o header.component.ts
 
@@ -98,26 +130,24 @@ export class HeaderComponent implements OnInit {
 
 ## Trackby
 
-- vamos criar um novo modulo 
+- vamos criar um novo modulo
 - ng g m list-example --route listExample --module app.module
 
 criou o modulo starter-kit\src\app\list-example
 criou a rota no starter-kit\src\app\app-routing.module.ts
 
-  { path: 'listExample', loadChildren: () => import('./list-example/list-example.module').then(m => m.ListExampleModule) },
+{ path: 'listExample', loadChildren: () => import('./list-example/list-example.module').then(m => m.ListExampleModule) },
 
-- alteramos starter-kit\src\app\app-routing.module.ts para que pre carregue todos os módulos 
-
+- alteramos starter-kit\src\app\app-routing.module.ts para que pre carregue todos os módulos
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {preloadingStrategy:PreloadAllModules})],
-  exports: [RouterModule],
-  providers: [],
+imports: [RouterModule.forRoot(routes, {preloadingStrategy:PreloadAllModules})],
+exports: [RouterModule],
+providers: [],
 })
 export class AppRoutingModule {}
 
-
-- vamos criar um service dentro de list-example 
+- vamos criar um service dentro de list-example
 - ng g service list-example/example-service
 
 ele deve ser importado pelo starter-kit\src\app\list-example\list-example.module.ts
@@ -144,11 +174,11 @@ import { ListExampleComponent } from './list-example.component';
 export class ListExampleModule { }
 ```
 
-o ideal teria sido criar uma pasta service e coloca-lo dentro da pasta service 
+o ideal teria sido criar uma pasta service e coloca-lo dentro da pasta service
 
-- vamos usar uma service para listar repositorios do github 
+- vamos usar uma service para listar repositorios do github
 
-dentro do core tem uma rota que usaremos no example-service que ficará assim  : 
+dentro do core tem uma rota que usaremos no example-service que ficará assim :
 
 ```JS
 
@@ -167,25 +197,23 @@ export class ExampleServiceService {
 }
 ```
 
-a classe QuoteService dentro do starter-kit\src\app\home\quote.service.ts está usando em seu contrutor um httpClient que usaremos 
+a classe QuoteService dentro do starter-kit\src\app\home\quote.service.ts está usando em seu contrutor um httpClient que usaremos
 
-Obs: Control espaço importa automatimante o import 
+Obs: Control espaço importa automatimante o import
 
-- http já está sendo importado na aplicação então é só usarmos 
+- http já está sendo importado na aplicação então é só usarmos
 
-- Observable ? 
+- Observable ?
 
-- mudamos o environment e rerescrevemos o quote service para fazer um request aos users do github 
-
-
+- mudamos o environment e rerescrevemos o quote service para fazer um request aos users do github
 
 export const environment = {
-  production: false,
-  hmr: true,
-  version: env.npm_package_version + '-dev',
-  gitHubUrl: '',
-  defaultLanguage: 'en-US',
-  supportedLanguages: ['en-US', 'fr-FR'],
+production: false,
+hmr: true,
+version: env.npm_package_version + '-dev',
+gitHubUrl: '',
+defaultLanguage: 'en-US',
+supportedLanguages: ['pt-BR',en-US', 'fr-FR'],
 };
 
 ```JS
@@ -241,95 +269,65 @@ export class ListExampleComponent implements OnInit {
 
 ```
 
-Desafio : 
+Desafio :
 
 ![](./desafio.PNG)
 
-Get ok 
--o professor criou conosco 
-delete ok 
--criei o componente delete list e sua rota 
+Get ok
+-o professor criou conosco
+delete ok
+-criei o componente delete list e sua rota
 ng g m delete-list --route delete-example --module app.module
+
 - criei o servico delete-list
 - ng g service delete-list/delete-service
-- adicionar no header 
-Post ok 
--criei o componente delete list e sua rota 
-ng g m post-list --route post-example --module app.module
+- adicionar no header
+  Post ok
+  -criei o componente delete list e sua rota
+  ng g m post-list --route post-example --module app.module
 - criei o servico post-list
 - ng g service post-list/post-service
-- adicionar no header 
-Put ok 
--criei o componente put list e sua rota 
-ng g m put-list --route put-example --module app.module
+- adicionar no header
+  Put ok
+  -criei o componente put list e sua rota
+  ng g m put-list --route put-example --module app.module
 - criei o servico put-list
 - ng g service put-list/put-service
-- adicionar no header 
+- adicionar no header
 
-
-
-
-
-
-ou com Github  ou local 
+ou com Github ou local
 
 - mapear o opbjeto de usuario em starter-kit\src\app\list-example\list-example.component.ts
 
-
--colocalo para dentro do services 
+-colocalo para dentro do services
 starter-kit\src\app\list-example\example-service.service.ts
 
-
-- tentei criar um json server 
+- tentei criar um json server
 
 npm install -g json-server
-- criei o arquivo db.json dentro da pasta db dentro de source 
-json-server --watch db.json
 
+- criei o arquivo db.json dentro da pasta db dentro de source
+  json-server --watch db.json
 
-dai vamos usar manipular esse usuario 
+dai vamos usar manipular esse usuario
 
+npm install -g @angular/cli
+npm i @angular-devkit/build-angular
+npm install -g typescript
 
-- https://api.github.com/users/1 retorna apenas o user com id 1 
+- https://api.github.com/users/1 retorna apenas o user com id 1
 
-
-- fazer um fork e um pull request 
+- fazer um fork e um pull request
 
 - olhar o providedIn no exampleservice.service (nao utilizado nao faz parte do bundle )
 
-- Lazy load 
+- Lazy load
 
-- Change detection (cada row da tabela seja um componente dica  : Ngcontent)
-https://medium.com/mestre-angular/entenda-change-detection-no-angular-b5f2fdf65000
-https://medium.com/senior/criando-componente-angular-com-conteudo-dinamico-ng-content-82334babe134
+- Change detection (cada row da tabela seja um componente dica : Ngcontent)
+  https://medium.com/mestre-angular/entenda-change-detection-no-angular-b5f2fdf65000
+  https://medium.com/senior/criando-componente-angular-com-conteudo-dinamico-ng-content-82334babe134
 
+- avatar do usuario vai ser um componente , que vai ter um input que vai usar onchange detenction push
+  se a row alterar e o avatar nao alterar nao deve renderizar o componente de novo
 
-- avatar do usuario vai ser um componente , que vai ter um input que vai usar onchange detenction push 
-se a row alterar e o avatar nao alterar nao deve renderizar o componente de novo 
-
-- colocar a lista de usuários no service se não coinseguir usar o github 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- colocar a lista de usuários no service se não coinseguir usar o github

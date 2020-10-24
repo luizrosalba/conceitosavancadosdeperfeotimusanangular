@@ -4,39 +4,31 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const routes = {
-  users: () => `/produtos`,
+  users: () => `/users`,
 };
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type': 'application/json',
     //Authorization: 'my-auth-token'
-  })
+  }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class DeleteService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient:HttpClient) { }
+  ///CRUD
 
-
-  ///CRUD 
-
-  getUsers () {
-    return this.httpClient.get(routes.users())
-    .pipe(
-      catchError(() => of('Error, could not load users'))
-    );
+  getUsers() {
+    return this.httpClient.get(routes.users()).pipe(catchError(() => of('Error, could not load users')));
   }
 
   deleteUsers(id: number): Observable<{}> {
-     return this.httpClient.delete(routes.users()+`/${id}`, httpOptions)
-      .pipe(
-        catchError(() => of('Error, could not load users'))
-      );
+    return this.httpClient
+      .delete(routes.users() + `/${id}`, httpOptions)
+      .pipe(catchError(() => of('Error, could not load users')));
   }
-
 }

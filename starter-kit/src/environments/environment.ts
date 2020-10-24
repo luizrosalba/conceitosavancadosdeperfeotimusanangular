@@ -6,5 +6,5 @@ export const environment = {
   version: env.npm_package_version + '-dev',
   gitHubUrl: 'http://localhost:3000',
   defaultLanguage: 'en-US',
-  supportedLanguages: ['en-US', 'fr-FR'],
+  supportedLanguages: ['pt-BR', 'en-US', 'fr-FR'],
 };

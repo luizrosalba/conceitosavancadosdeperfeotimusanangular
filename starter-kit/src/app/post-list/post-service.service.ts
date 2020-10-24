@@ -4,51 +4,41 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const routes = {
-  users: () => `/produtos`,
+  users: () => `/users`,
 };
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/x-www-form-urlencoded',
-    
+    'Content-Type': 'application/x-www-form-urlencoded',
+
     //Authorization: 'my-auth-token'
-  })
+  }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class PostService {
-  
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient:HttpClient) { }
+  ///CRUD
 
-
-  ///CRUD 
-
-  getUsers () {
-    return this.httpClient.get(routes.users())
-    .pipe(
-      catchError(() => of('Error, could not load users'))
-    );
+  getUsers() {
+    return this.httpClient.get(routes.users()).pipe(catchError(() => of('Error, could not load users')));
   }
 
   postUsers(user: Object): Observable<{}> {
-    let nome = user["nome"];
-    let descricao = user["descricao"];
-    let preco = user["preco"];
-    let categoria_id = user["categoria_id"];
+    let nome = user['nome'];
+    let descricao = user['descricao'];
+    let preco = user['preco'];
+    let categoria_id = user['categoria_id'];
     let body = `nome=${nome}&descricao=${descricao}&preco=${preco}&categoria_id=${categoria_id}`;
-   
-    return this.httpClient.post(routes.users(),body, httpOptions)
-     .pipe(
-       catchError(() => of('Error, could not load users'))
-     );
- }
 
+    return this.httpClient
+      .post(routes.users(), body, httpOptions)
+      .pipe(catchError(() => of('Error, could not load users')));
+  }
 }
-
 
 // let grant_type = 'password';
 // let username = 'varejo_user';

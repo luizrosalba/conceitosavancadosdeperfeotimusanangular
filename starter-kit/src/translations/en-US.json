@@ -1,8 +1,12 @@
 {
-  "APP_NAME": "ngX-Rocket",
+  "APP_NAME": "User Management",
   "About": "About",
   "Hello world !": "Hello world !",
   "Home": "Home",
+  "New User": "New User",
+  "User List": "User List",
+  "Delete User": "Delete User",
+  "Update User": "Update User",
   "Logged in as": "Logged in as",
   "Login": "Login",
   "Logout": "Logout",
