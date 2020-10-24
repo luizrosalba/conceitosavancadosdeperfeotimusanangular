@@ -10,6 +10,51 @@
       <td>html</td>
       <td>Tipo de Usuário</td>
     </tr>
+    <!-- deve ter conteudo dinamico  usando ngcontent-->
+    <tr *ngFor="let user of usuarios; trackBy: trackById">
+      <td>
+        <img [src]="user.avatar_url" width="80px" height="80px" />
+      </td>
+      <!--  <app-row-table [(id)]="user.id"> </app-row-table> <ng-content select="id"></ng-content> -->
+      <ng-content select="[id]"></ng-content>
+
+      <!-- <td>  
+      {{ user.id }}
+    </td>
+     -->
+
+      <td>
+        <input type="string" [(ngModel)]="user.login" />
+      </td>
+      <td>
+        <input type="string" [(ngModel)]="user.html_url" />
+      </td>
+      <td>
+        <input type="string" [(ngModel)]="user.type" />
+      </td>
+      <!-- <td>
+        <button mat-button (click)="onClickMe(user.id)">Deletar</button>
+      </td>
+      <td>
+        <button mat-button (click)="Click(users)">Adicionar</button>
+      </td> -->
+    </tr>
+  </tbody>
+</table>
+
+<!-- 
+  <table>
+  <thead>
+    <th>Lista de Usuários</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Avatar</td>
+      <td>Id</td>
+      <td>Login</td>
+      <td>html</td>
+      <td>Tipo de Usuário</td>
+    </tr>
 
     <tr *ngFor="let user of users; trackBy: trackById">
       <td>
@@ -29,6 +74,5 @@
       </td>
     </tr>
   </tbody>
-</table>
-
-<!-- {{user.id}} -->
+</table> 
+-->

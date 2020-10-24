@@ -6,14 +6,24 @@
 
 Este projeto em Angular é uma continuidade do projeto desenvolvido no curso Conceitos Avançados de performance e otimização usando Angular . Requerimentos :
 
-- Usar o enableProdMode
+- Usar o enableProdMode (falta )
+
 - Tree-shakeable providers (providedIn) (ok)
-- Carregamento Tardio de recursos (Lazy Load)
-- Change Detection (cada Row da Tabela deve ser um componente - Ngcontent )
+
+- Carregamento Tardio de recursos (Lazy Load) (ok está sendo feito no about e no list example)
+
+- Change Detection (ok está sendo feito no list example)
+  @Input() usuarios:any =[];/// o componente só sera renderizado novamente se essa variavel mudar
+
+- (cada Row da Tabela deve ser um componente - Ngcontent )
+
 - O avatar do user vai ser um componente que deve ter um input que deve usar o changeDetection on push
   (se a row alterar e o avatar nao alterar ele não renderiza o componente de novo )
+
 - Pipes Puros (não houve tempo) (ok)
+
 - trackBy no \*ngFor (ok)
+
 - CRUD com a API do GitHub (foi utilizado o json server conforme sugestão do professor) (ok)
 
 Para utilização é necessário ter o Angular instalado:
@@ -295,6 +305,12 @@ ng g m delete-list --route delete-example --module app.module
 - ng g service put-list/put-service
 - adicionar no header
 
+-criei o componente row-table e sua rota
+ng g m row-table --route row-table --module app.module
+
+- criei o service dentro do row-table
+  ng g service row-table/row-service
+
 ou com Github ou local
 
 - mapear o opbjeto de usuario em starter-kit\src\app\list-example\list-example.component.ts
@@ -331,3 +347,7 @@ npm install -g typescript
   se a row alterar e o avatar nao alterar nao deve renderizar o componente de novo
 
 - colocar a lista de usuários no service se não coinseguir usar o github
+
+///https://medium.com/senior/criando-componente-angular-com-conteudo-dinamico-ng-content-82334babe134
+https://medium.com/@joshblf/wtf-is-ng-content-8382b2a664e1
+https://stackoverflow.com/questions/52994927/ng-content-select-not-working-element-is-not-a-known-element

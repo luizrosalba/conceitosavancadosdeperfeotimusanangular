@@ -4,14 +4,12 @@ import { CommonModule } from '@angular/common';
 //import {ExampleService} from './example-service.service'
 import { ListExampleRoutingModule } from './list-example-routing.module';
 import { ListExampleComponent } from './list-example.component';
-
+import { FormsModule } from '@angular/forms';
+import { RowTableModule } from '../row-table/row-table.module';
 
 @NgModule({
   declarations: [ListExampleComponent],
-  imports: [
-    CommonModule,
-    ListExampleRoutingModule
-  ],
-  providers:[ ]
+  imports: [CommonModule, FormsModule, ListExampleRoutingModule, RowTableModule],
+  providers: [],
 })
-export class ListExampleModule { }
+export class ListExampleModule {}

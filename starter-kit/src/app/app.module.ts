@@ -23,7 +23,7 @@ import { AppRoutingModule } from './app-routing.module';
     CoreModule,
     SharedModule,
     ShellModule,
-//    AboutModule, // Lazy Load
+    //    AboutModule, // Lazy Load nao vai carregar no começo
     HomeModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
