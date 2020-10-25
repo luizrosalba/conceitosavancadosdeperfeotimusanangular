@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, Input } from '@angular/core';
+import { RowService } from './row-service.service';
 
 @Component({
   selector: 'app-row-table',
@@ -7,13 +8,13 @@ import { ChangeDetectionStrategy, Component, OnInit, Input } from '@angular/core
   styleUrls: ['./row-table.component.scss'],
 })
 export class RowTableComponent implements OnInit {
-  // @Input() avatar:string ;/// somente o campo alterado sera renderizado novamente
-  // @Input() login:string ;/// somente o campo alterado sera renderizado novamente
-  @Input() id: number; /// somente o campo alterado sera renderizado novamente
-  // @Input() html:string ;/// somente o campo alterado sera renderizado novamente
-  // @Input() tipo:string ;/// somente o campo alterado sera renderizado novamente
+  avatar: string; /// somente o campo alterado sera renderizado novamente
+  login: string; /// somente o campo alterado sera renderizado novamente
+  id: number; /// somente o campo alterado sera renderizado novamente
+  html_url: string; /// somente o campo alterado sera renderizado novamente
+  type: string; /// somente o campo alterado sera renderizado novamente
 
-  constructor() {}
+  constructor(private rowService: RowService) {}
 
   ngOnInit(): void {}
 }

@@ -28,11 +28,10 @@ export class PostService {
   }
 
   postUsers(user: Object): Observable<{}> {
-    let nome = user['nome'];
-    let descricao = user['descricao'];
-    let preco = user['preco'];
-    let categoria_id = user['categoria_id'];
-    let body = `nome=${nome}&descricao=${descricao}&preco=${preco}&categoria_id=${categoria_id}`;
+    let login = user['login'];
+    let html_url = user['html_url'];
+    let type = user['type'];
+    let body = `login=${login}&html_url=${html_url}&type=${type}`;
 
     return this.httpClient
       .post(routes.users(), body, httpOptions)

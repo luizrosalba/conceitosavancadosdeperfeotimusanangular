@@ -6,13 +6,14 @@
 
 Este projeto em Angular é uma continuidade do projeto desenvolvido no curso Conceitos Avançados de performance e otimização usando Angular . Requerimentos :
 
-- Usar o enableProdMode (falta )
+- Usar o enableProdMode (ok alterei environment.ts para production: true e hmr: false em starter-kit\src\environments\environment.ts )
 
 - Tree-shakeable providers (providedIn) (ok)
 
 - Carregamento Tardio de recursos (Lazy Load) (ok está sendo feito no about e no list example)
 
-- Change Detection (ok está sendo feito no list example)
+- Change Detection (ok está sendo feito no row-table nao sei se ainda é isso , acho que
+  deveria ter só um botao e recarregar só os que tiveram mudanca )
   @Input() usuarios:any =[];/// o componente só sera renderizado novamente se essa variavel mudar
 
 - (cada Row da Tabela deve ser um componente - Ngcontent )

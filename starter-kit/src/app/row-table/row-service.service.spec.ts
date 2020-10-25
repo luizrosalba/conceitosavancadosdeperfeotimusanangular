@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RowServiceService } from './row-service.service';
+import { RowService } from './row-service.service';
 
 describe('RowServiceService', () => {
-  let service: RowServiceService;
+  let service: RowService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RowServiceService);
+    service = TestBed.inject(RowService);
   });
 
   it('should be created', () => {

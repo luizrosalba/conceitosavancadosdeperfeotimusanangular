@@ -10,6 +10,5 @@ import { RowTableModule } from '../row-table/row-table.module';
 @NgModule({
   declarations: [ListExampleComponent],
   imports: [CommonModule, FormsModule, ListExampleRoutingModule, RowTableModule],
-  providers: [],
 })
 export class ListExampleModule {}

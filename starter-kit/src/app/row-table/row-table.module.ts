@@ -7,5 +7,6 @@ import { RowTableComponent } from './row-table.component';
 @NgModule({
   declarations: [RowTableComponent],
   imports: [CommonModule, RowTableRoutingModule],
+  exports: [RowTableComponent], //// faltava exportar !
 })
 export class RowTableModule {}
