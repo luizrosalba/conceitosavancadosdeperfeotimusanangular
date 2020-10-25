@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Input, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RowTableRoutingModule } from './row-table-routing.module';

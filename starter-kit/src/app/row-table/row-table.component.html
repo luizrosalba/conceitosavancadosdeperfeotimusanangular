@@ -1,25 +1,42 @@
-<td>
-  <h5>
-    <ng-content select="[avatar]"></ng-content>
-  </h5>
-</td>
-<td>
-  <h5>
-    <ng-content select="[id]"></ng-content>
-  </h5>
-</td>
-<td>
-  <h5>
-    <ng-content select="[login]"></ng-content>
-  </h5>
-</td>
-<td>
-  <h5>
-    <ng-content select="[html_url]"></ng-content>
-  </h5>
-</td>
-<td>
-  <h5>
-    <ng-content select="[type]"></ng-content>
-  </h5>
-</td>
+<table>
+  <thead>
+    <th>Lista de Usuários</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Avatar</td>
+      <td>Id</td>
+      <td>Login</td>
+      <td>html</td>
+      <td>Tipo de Usuário</td>
+    </tr>
+    <tr *ngFor="let user of usuarios; trackBy: trackById">
+      <td>
+        <!-- <ng-content select="[avatar]"></ng-content> -->
+        {{ user.id }}
+      </td>
+      <td>
+        <!-- <ng-content select="[id]"></ng-content> -->
+        {{ user.id }}
+      </td>
+      <td>
+        <!-- <ng-content select="[login]"></ng-content> -->
+        {{ user.id }}
+      </td>
+      <td>
+        <!-- <ng-content select="[html_url]"></ng-content> -->
+        {{ user.id }}
+      </td>
+      <td>
+        <!-- <ng-content select="[type]"></ng-content> -->
+        {{ user.id }}
+      </td>
+    </tr>
+    <!-- <td>
+        <button mat-button (click)="clickEditar(user)">Editar</button>
+      </td>
+      <td>
+        <button mat-button (click)="clickDelete(user.id)">Deletar</button>
+      </td> -->
+  </tbody>
+</table>

@@ -6,13 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { PutListRoutingModule } from './put-list-routing.module';
 import { PutListComponent } from './put-list.component';
 
-
 @NgModule({
   declarations: [PutListComponent],
-  imports: [
-    CommonModule,
-    PutListRoutingModule,
-    FormsModule
-  ]
+  imports: [CommonModule, PutListRoutingModule, FormsModule],
 })
-export class PutListModule { }
+export class PutListModule {}

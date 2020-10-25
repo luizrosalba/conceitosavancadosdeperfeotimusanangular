@@ -26,6 +26,6 @@ export class PostListComponent implements OnInit {
     this.postService.postUsers(user).subscribe((users) => {
       this.users = users;
     });
-    alert('Usuario ' + user['nome'] + ' adicionado');
+    alert('Usuario ' + user['login'] + ' adicionado');
   }
 }

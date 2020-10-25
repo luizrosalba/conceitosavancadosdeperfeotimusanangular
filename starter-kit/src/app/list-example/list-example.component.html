@@ -1,4 +1,10 @@
-<table>
+<!-- <app-row-table [usuarios]="usuarios"> 
+       
+</app-row-table>  -->
+
+<app-row-table [data]="usuarios"></app-row-table>
+
+<!-- <table>
   <thead>
     <th>Lista de Usuários</th>
   </thead>
@@ -11,30 +17,15 @@
       <td>Tipo de Usuário</td>
     </tr>
 
-    <tr *ngFor="let user of usuarios; trackBy: trackById">
-      <app-row-table>
-        <td avatar>
-          <img [src]="user.avatar_url" width="80px" height="80px" />
-        </td>
-        <td id>
-          {{ user.id }}
-        </td>
-        <td login>
-          <input type="string" [(ngModel)]="user.login" />
-        </td>
-        <td html_url>
-          <input type="string" [(ngModel)]="user.html_url" />
-        </td>
-        <td type>
-          <input type="string" [(ngModel)]="user.type" />
-        </td>
-      </app-row-table>
-      <td>
+     <tr *ngFor="let user of usuarios; trackBy: trackById"> -->
+
+<!-- <td>
         <button mat-button (click)="clickEditar(user)">Editar</button>
       </td>
       <td>
         <button mat-button (click)="clickDelete(user.id)">Deletar</button>
-      </td>
-    </tr>
+      </td> -->
+<!-- </tr> 
   </tbody>
-</table>
+</table> 
+-->

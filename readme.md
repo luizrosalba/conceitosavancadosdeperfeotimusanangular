@@ -16,14 +16,15 @@ Este projeto em Angular é uma continuidade do projeto desenvolvido no curso Con
   deveria ter só um botao e recarregar só os que tiveram mudanca )
   @Input() usuarios:any =[];/// o componente só sera renderizado novamente se essa variavel mudar
 
-- (cada Row da Tabela deve ser um componente - Ngcontent )
+- (cada Row da Tabela deve ser um componente - Ngcontent ok criei o component row table que representa
+  cada linha da tabela )
 
 - O avatar do user vai ser um componente que deve ter um input que deve usar o changeDetection on push
   (se a row alterar e o avatar nao alterar ele não renderiza o componente de novo )
 
 - Pipes Puros (não houve tempo) (ok)
 
-- trackBy no \*ngFor (ok)
+- trackBy no \*ngFor (ok dentro do list-example)
 
 - CRUD com a API do GitHub (foi utilizado o json server conforme sugestão do professor) (ok)
 
