@@ -18,8 +18,6 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
       } else {
         request = request.clone({ url: environment.gitHubUrl + request.url });
       }
-
-      // request = request.clone({ url: environment.chuckNorrisServerUrl + request.url });
     }
     return next.handle(request);
   }
