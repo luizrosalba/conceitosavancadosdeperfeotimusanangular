@@ -12,15 +12,16 @@ Este projeto em Angular é uma continuidade do projeto desenvolvido no curso Con
 
 - Carregamento Tardio de recursos (Lazy Load) (ok está sendo feito no about e no list example)
 
-- Change Detection (ok está sendo feito no row-table nao sei se ainda é isso , acho que
-  deveria ter só um botao e recarregar só os que tiveram mudanca )
-  @Input() usuarios:any =[];/// o componente só sera renderizado novamente se essa variavel mudar
+- Change Detection (ok está sendo feito no row-table nada é rerenderizado se não houver mudança no componente)
 
-- (cada Row da Tabela deve ser um componente - Ngcontent ok criei o component row table que representa
-  cada linha da tabela )
+  @Input() usuarios:any =[];/// Quando o botao editar é clicado um patch altera a base de dados e o componente
+  não é rerenderizado ( pois já apresenta a mudança feita )
+
+- (cada Row da Tabela deve ser um componente ok criei o component row table que representa
+  cada linha da tabela ) <app-row-table \*ngFor="let user of usuarios; trackBy: trackById" [user]="user"> </app-row-table> chama esse componente e injeta as informações do usuario nele.
 
 - O avatar do user vai ser um componente que deve ter um input que deve usar o changeDetection on push
-  (se a row alterar e o avatar nao alterar ele não renderiza o componente de novo )
+  (se a row alterar e o avatar nao alterar ele não renderiza o componente de novo ) ok
 
 - Pipes Puros (não houve tempo) (ok)
 
