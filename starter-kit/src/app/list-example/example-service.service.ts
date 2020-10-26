@@ -25,6 +25,12 @@ export class ExampleService {
     return this.httpClient.get(routes.users()).pipe(catchError(() => of('Error, could not load users')));
   }
 
+  deleteUsers(id: number): Observable<{}> {
+    return this.httpClient
+      .delete(routes.users() + `/${id}`, httpOptions)
+      .pipe(catchError(() => of('Error, could not load users')));
+  }
+
   patchUsers(user: Object): Observable<{}> {
     let id = user['id'];
     let login = user['login'];
@@ -34,12 +40,6 @@ export class ExampleService {
 
     return this.httpClient
       .patch(routes.users() + `/${id}`, body, httpOptions)
-      .pipe(catchError(() => of('Error, could not load users')));
-  }
-
-  deleteUsers(id: number): Observable<{}> {
-    return this.httpClient
-      .delete(routes.users() + `/${id}`, httpOptions)
       .pipe(catchError(() => of('Error, could not load users')));
   }
 }
